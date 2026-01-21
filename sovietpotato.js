@@ -3,7 +3,6 @@ var money = 0;
 var vodka = 0;
 var potatoes = 0;
 var keg = 0;
-var happiness = 0;
 
 
 function preload() {
