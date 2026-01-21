@@ -6,12 +6,76 @@ var keg = 0;
 var happiness = 0;
 
 
-
+function preload() {
+  sovietpotato = loadImage('potato.png');
+}
 function setup() {
   createCanvas(1500, 835);
 }
 function draw() {
   background(0, 0, 0);
+  image(sovietpotato, 0, 0, 250, 250);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//cred
+  fill("white");
+  stroke("white");
+  textSize(20);
+  text("game made by fuzzy_foxf", 1500, 0);
 
 }
