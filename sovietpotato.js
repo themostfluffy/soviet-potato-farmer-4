@@ -73,9 +73,10 @@ function draw() {
 
 
 //cred
-  fill("white");
-  stroke("white");
-  textSize(20);
-  text("game made by fuzzy_foxf", 1500, 0);
+ stroke(255, 255, 255);
+ fill(255, 255, 255);
+ 
+  textSize(15);
+  text("game made by @fuzzy_foxf", 0, 830);
 
 }
