@@ -6,7 +6,7 @@ var keg = 0;
 var cooldownsvodka = 2000;
 
 //upgradable variables
-var vodkaprice = 15;
+var vodkaprice = 10;
 var potatoclick = 1;
 var maxcooldownsvodka = 2000;
 var cooldownskeg = 0;
@@ -110,12 +110,12 @@ function mousePressed() {
   //more potato per click
   if (mouseX > 1450 && mouseX < 1500 && mouseY > 700 && mouseY < 750&&money>=500) {
     money = money - 500;
-    potatoclick = potatoclick + 1;
+    potatoclick = potatoclick *1.05;
   }
   //more money per vodka sold
   if (mouseX > 1400 && mouseX < 1450 && mouseY > 700 && mouseY < 750&&money>=1000) {
     money = money - 1000;
-    vodkaprice = vodkaprice + 5;
+    vodkaprice = vodkaprice *1.1;
   }
   
 }
