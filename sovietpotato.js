@@ -1,10 +1,13 @@
 //the variables
-var money = 100;
+var money = 1;
 var vodka = 0;
 var potatoes = 0;
 var keg = 0;
-//cooldowns and the max cooldowns
 var cooldownsvodka = 2000;
+
+//upgradable variables
+var vodkaprice = 15;
+var potatoclick = 1;
 var maxcooldownsvodka = 2000;
 var cooldownskeg = 0;
 
@@ -15,16 +18,29 @@ function preload() {
   vodkabottle = loadImage('vodka.png');
   sellpotato = loadImage('sellpotato.jpeg');
   sellvodka = loadImage('sellvodka.jpeg');
+  lesscooldown = loadImage('lesscooldown.png');
+  moremoney = loadImage('moremoney.png');
+  morepotato = loadImage('morepotato.png');
 }
 function setup() {
   createCanvas(1500, 835);
 }
 function draw() {
   background(0, 0, 0);
+  //the econ images
   image(sovietpotato, 0, 0, 250, 250);
   image(vodkabottle, 0, 250, 250, 250);
-  image(sellpotato, 1250, 0, 100, 100);
-  image(sellvodka, 1350, 0, 100, 100);
+
+  //the sell buttons
+  image(sellpotato, 1300, 0, 100, 100);
+  image(sellvodka, 1400, 0, 100, 100);
+  
+  //the upgrade images
+  image(lesscooldown, 1350, 700, 50, 50);
+  image(moremoney, 1400, 700, 50, 50);
+  image(morepotato, 1450, 700, 50, 50);
+
+
 textSize(32);
 fill(255, 0, 0);
 text("Soviet Potato Farmer", 300, 50);
@@ -60,19 +76,22 @@ cooldownsvodka = cooldownsvodka - 1;
 
 //function to click
 function mousePressed() {
+//sell buttons  
   //sell potato
-  if (mouseX > 1250 && mouseX < 1350 && mouseY > 0 && mouseY < 100&&potatoes>=1) {
+  if (mouseX > 1300 && mouseX < 1400 && mouseY > 0 && mouseY < 100&&potatoes>=1) {
     money = money + 2.5;
     potatoes = potatoes - 1;
   }
   //sell vodka
-  if (mouseX > 1350 && mouseX < 1450 && mouseY > 0 && mouseY < 100&&vodka>=1) {
-    money = money + 15;
+  if (mouseX > 1400 && mouseX < 1500 && mouseY > 0 && mouseY < 100&&vodka>=1) {
+    money = money + vodkaprice;
     vodka = vodka - 1;
   }
+
+//buy/make
   //if you click on the potato
   if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250&&money>=1) {
-    potatoes = potatoes + 1;
+    potatoes = potatoes + potatoclick;
     money = money - 1;
  
   }
@@ -82,6 +101,23 @@ function mousePressed() {
     potatoes = potatoes - 5;
     cooldownsvodka = maxcooldownsvodka; 
   }
+// upgrades
+  //less vodka cooldown
+  if (mouseX > 1350 && mouseX < 1400 && mouseY > 700 && mouseY < 750&&money>=100) {
+    money = money - 100;
+    maxcooldownsvodka = maxcooldownsvodka - 10;
+  }
+  //more potato per click
+  if (mouseX > 1450 && mouseX < 1500 && mouseY > 700 && mouseY < 750&&money>=500) {
+    money = money - 500;
+    potatoclick = potatoclick + 1;
+  }
+  //more money per vodka sold
+  if (mouseX > 1400 && mouseX < 1450 && mouseY > 700 && mouseY < 750&&money>=1000) {
+    money = money - 1000;
+    vodkaprice = vodkaprice + 5;
+  }
+  
 }
 
 //function to key press
