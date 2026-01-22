@@ -103,9 +103,9 @@ function mousePressed() {
   }
 // upgrades
   //less vodka cooldown
-  if (mouseX > 1350 && mouseX < 1400 && mouseY > 700 && mouseY < 750&&money>=100) {
-    money = money - 100;
-    maxcooldownsvodka = maxcooldownsvodka - 10;
+  if (mouseX > 1350 && mouseX < 1400 && mouseY > 700 && mouseY < 750&&money>=250) {
+    money = money - 250;
+    maxcooldownsvodka = maxcooldownsvodka/ 1.1;
   }
   //more potato per click
   if (mouseX > 1450 && mouseX < 1500 && mouseY > 700 && mouseY < 750&&money>=500) {
