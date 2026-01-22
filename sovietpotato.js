@@ -43,7 +43,7 @@ function draw() {
 
 textSize(32);
 fill(255, 0, 0);
-text("Soviet Potato Farmer", 300, 50);
+text("Soviet Potato Farmer 3 beta", 300, 50);
 
 //display the variables
 textSize(25);
