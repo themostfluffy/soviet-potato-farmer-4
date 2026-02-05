@@ -62,20 +62,26 @@ function draw() {
 
   //hover text for upgrades and sell buttons
   //sell potato
-  if (mouseX > 1300 && mouseX < 1400 && mouseY > 0 && mouseY < 100) { 
-    
+  if (mouseX > 1300 && mouseX < 1400 && mouseY > 0 && mouseY < 100) {
+    fill(255, 255, 255);
+    textSize(15);
+    text("Sell Potato (2.5$ each)", 750, 760);
+  }
+
   //less vodka cooldown
   if (mouseX > 1350 && mouseX < 1400 && mouseY > 700 && mouseY < 750) {
     fill(255, 255, 255);
     textSize(15);
     text("Less Vodka Cooldown (250$)", 750, 760);
   }
+
   //more money per vodka sold
   if (mouseX > 1400 && mouseX < 1450 && mouseY > 700 && mouseY < 750) {
     fill(255, 255, 255);
     textSize(15);
     text("More Money per Vodka Sold (1000$)", 750, 760);
   }
+
   //more potato per click
   if (mouseX > 1450 && mouseX < 1500 && mouseY > 700 && mouseY < 750) {
     fill(255, 255, 255);
@@ -93,82 +99,62 @@ function draw() {
 
 //function to click
 function mousePressed() {
+
   //sell buttons
+
   //sell potato
-  if (
-    mouseX > 1300 &&
-    mouseX < 1400 &&
-    mouseY > 0 &&
-    mouseY < 100 &&
-    potatoes >= 1
-  ) {
-    money = potatoes*2.5+ money;
+
+  if (mouseX > 1300 &&mouseX < 1400 &&mouseY > 0 &&mouseY < 100 &&potatoes >= 1) 
+  {
+    money = potatoes * 2.5 + money;
     potatoes = potatoes - potatoes;
   }
+
   //sell vodka
-  if (
-    mouseX > 1400 &&
-    mouseX < 1500 &&
-    mouseY > 0 &&
-    mouseY < 100 &&
-    vodka >= 1
-  ) {
-    money = vodka*vodkaprice + money;
+  if (mouseX > 1400 &&mouseX < 1500 &&mouseY > 0 &&mouseY < 100 &&vodka >= 1) 
+  {
+    money = vodka * vodkaprice + money;
     vodka = vodka - vodka;
   }
 
   //buy/make
+
   //if you click on the potato
-  if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250 && money >= 1) {
+  if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250 && money >= 1) 
+  {
     potatoes = potatoes + potatoclick;
     money = money - 1;
   }
+
   //if you click on the vodka bottle
-  if (
-    mouseX > 0 &&
-    mouseX < 250 &&
-    mouseY > 250 &&
-    mouseY < 500 &&
-    potatoes >= 5 &&
-    cooldownsvodka <= 0
-  ) {
+  if (mouseX > 0 &&mouseX < 250 &&mouseY > 250 &&mouseY < 500 &&potatoes >= 5 &&cooldownsvodka <= 0) 
+  {
     vodka = vodka + 1;
     potatoes = potatoes - 5;
     cooldownsvodka = maxcooldownsvodka;
   }
+
+
   // upgrades
+
   //less vodka cooldown
-  if (
-    mouseX > 1350 &&
-    mouseX < 1400 &&
-    mouseY > 700 &&
-    mouseY < 750 &&
-    money >= 250
-  ) {
+  if (mouseX > 1350 &&mouseX < 1400 &&mouseY > 700 &&mouseY < 750 &&money >= 250) 
+  {
     money = money - 250;
     maxcooldownsvodka = maxcooldownsvodka / 2;
   }
+
   //more potato per click
-  if (
-    mouseX > 1450 &&
-    mouseX < 1500 &&
-    mouseY > 700 &&
-    mouseY < 750 &&
-    money >= 500
-  ) {
+  if (mouseX > 1450 &&mouseX < 1500 &&mouseY > 700 &&mouseY < 750 &&money >= 500) 
+  {
     money = money - 500;
     potatoclick = potatoclick * 2;
   }
+
   //more money per vodka sold
-  if (
-    mouseX > 1400 &&
-    mouseX < 1450 &&
-    mouseY > 700 &&
-    mouseY < 750 &&
-    money >= 1000
-  ) {
+  if (mouseX > 1400 &&mouseX < 1450 &&mouseY > 700 &&mouseY < 750 &&money >= 1000) 
+  {
     money = money - 1000;
     vodkaprice = vodkaprice * 2;
   }
-}
 }
