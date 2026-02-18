@@ -74,7 +74,8 @@ function draw() {
       money = money + potatoes * potatocost;
       potatoes = 0;
     }
-
+   
+  //vodka click cooldown
   textSize(20);
   fill(255, 255, 0);
   text("Vodka Cooldown: " + cooldownsvodka, 300, 300);
@@ -84,6 +85,18 @@ function draw() {
   } else {
     cooldownsvodka = 0;
   }
+  //vodka shipping cooldown
+  textSize(20);
+  fill(255, 255, 0);
+  text("Vodka Shipping Cooldown: " + vodkaShipping, 300, 400);
+    if (vodkaShipping > 0) {
+      vodkaShipping = vodkaShipping - 1;
+    } else if (vodkaShipping <= 0 && vodka >= 1) {
+      vodkaShipping = maxVodkaShipping;
+      money = money + vodka * vodkaprice;
+      vodka = 0;
+    }
+
 
   //hover text for upgrades and sell buttons
   
@@ -132,6 +145,7 @@ function mousePressed() {
     fill(255, 0, 0);
     textSize(20);
     text("You have reached the maximum amount of potatoes! ship some to make more room!", 300, 400);
+    potatoes = maxpotato;
   }
 
   //if you click on the vodka bottle
