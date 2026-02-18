@@ -2,6 +2,7 @@
 var money = 5;
 var vodka = 0;
 var potatoes = 0;
+var potatocost = 2.5;
 var keg = 0;
 var cooldownsvodka = 2000;
 
@@ -11,11 +12,15 @@ var potatoclick = 1;
 var maxcooldownsvodka = 2000;
 var cooldownskeg = 0;
 
+//cooldown variables
+var potatoShipping = 2000;
+var maxPotatoShipping = 2000;
+
+
 function preload() {
   sovietpotato = loadImage("potato.png");
   vodkabottle = loadImage("vodka.png");
-  sellpotato = loadImage("sellpotato.jpeg");
-  sellvodka = loadImage("sellvodka.jpeg");
+
   lesscooldown = loadImage("lesscooldown.png");
   moremoney = loadImage("moremoney.png");
   morepotato = loadImage("morepotato.png");
@@ -29,9 +34,6 @@ function draw() {
   image(sovietpotato, 0, 0, 250, 250);
   image(vodkabottle, 0, 250, 250, 250);
 
-  //the sell buttons
-  image(sellpotato, 1300, 0, 100, 100);
-  image(sellvodka, 1400, 0, 100, 100);
 
   //the upgrade images
   image(lesscooldown, 1350, 700, 50, 50);
@@ -43,17 +45,30 @@ function draw() {
   text("Soviet Potato Farmer 3 beta", 300, 50);
 
   //display the variables
+  //economy variable text
   textSize(25);
   fill(255, 255, 255);
   text("Potatoes: " + potatoes, 300, 100);
   text("Vodka: " + vodka, 300, 150);
   text("Kegs: " + keg, 300, 200);
   text("Money: " + money, 300, 250);
+//
+
   //cooldowns
+
+  text("potato shipping cooldown: " + potatoShipping, 300, 350);
+    if (potatoShipping > 0) {
+      potatoShipping = potatoShipping - 1;
+    } else if (potatoShipping <= 0 && potatoes >= 5) {
+      potatoShipping = maxPotatoShipping;
+      money = money + potatoes * potatocost;
+      potatoes = 0;
+    }
+
   textSize(20);
   fill(255, 255, 0);
   text("Vodka Cooldown: " + cooldownsvodka, 300, 300);
-
+  
   if (cooldownsvodka > 0) {
     cooldownsvodka = cooldownsvodka - 1;
   } else {
@@ -100,22 +115,6 @@ function draw() {
 //function to click
 function mousePressed() {
 
-  //sell buttons
-
-  //sell potato
-
-  if (mouseX > 1300 &&mouseX < 1400 &&mouseY > 0 &&mouseY < 100 &&potatoes >= 1) 
-  {
-    money = potatoes * 2.5 + money;
-    potatoes = potatoes - potatoes;
-  }
-
-  //sell vodka
-  if (mouseX > 1400 &&mouseX < 1500 &&mouseY > 0 &&mouseY < 100 &&vodka >= 1) 
-  {
-    money = vodka * vodkaprice + money;
-    vodka = vodka - vodka;
-  }
 
   //buy/make
 
