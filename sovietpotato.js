@@ -64,6 +64,8 @@ function draw() {
 
   //cooldowns
 
+   textSize(20);
+   fill(255, 255, 0);
   text("potato shipping cooldown: " + potatoShipping, 300, 350);
     if (potatoShipping > 0) {
       potatoShipping = potatoShipping - 1;
@@ -122,10 +124,14 @@ function mousePressed() {
   //buy/make
 
   //if you click on the potato
-  if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250 && money >= 1) 
+  if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250 && money >= 1&& potatoes < maxpotato) 
   {
     potatoes = potatoes + potatoclick;
     money = money - 1;
+  }else if (mouseX > 0 && mouseX < 250 && mouseY > 0 && mouseY < 250 && potatoes >= maxpotato) {
+    fill(255, 0, 0);
+    textSize(20);
+    text("You have reached the maximum amount of potatoes! ship some to make more room!", 300, 400);
   }
 
   //if you click on the vodka bottle
