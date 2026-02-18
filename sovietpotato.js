@@ -6,15 +6,23 @@ var potatocost = 2.5;
 var keg = 0;
 var cooldownsvodka = 2000;
 
+
 //upgradable variables
 var vodkaprice = 10;
+
 var potatoclick = 1;
-var maxcooldownsvodka = 2000;
+var maxpotato=100;
+
 var cooldownskeg = 0;
+
 
 //cooldown variables
 var potatoShipping = 2000;
 var maxPotatoShipping = 2000;
+
+var vodkaShipping = 5000;
+var maxVodkaShipping = 5000;
+var maxcooldownsvodka = 2000;
 
 
 function preload() {
@@ -76,12 +84,7 @@ function draw() {
   }
 
   //hover text for upgrades and sell buttons
-  //sell potato
-  if (mouseX > 1300 && mouseX < 1400 && mouseY > 0 && mouseY < 100) {
-    fill(255, 255, 255);
-    textSize(15);
-    text("Sell Potato (2.5$ each)", 750, 760);
-  }
+  
 
   //less vodka cooldown
   if (mouseX > 1350 && mouseX < 1400 && mouseY > 700 && mouseY < 750) {
